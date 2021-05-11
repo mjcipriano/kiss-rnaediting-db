@@ -1,0 +1,11 @@
+Transcript name	pre-edit start	pre-edit stop	edit start	edit stop	junction start	junction stop	gRNA name	gRNA start	gRNA stop	junction type	blast vs. parent
+BS_11H12primer.ab1	4	27	90	303	27	90	TbMini002_K19_TbMini002F10.b1_070.ab1	65	91	lead-out	blast match: evalue->0.59 perc_identity->100
+BS_11H12primer.ab1	4	27	90	303	27	90	TbMini002_K20_TbMini002F10.g1_070.ab1	65	91	lead-out	blast match: evalue->0.59 perc_identity->100
+BS_11H12primer.ab1	4	27	90	303	27	90	TbMini002_E14_TbMini002C07.g1_059.ab1	66	87	internal	blast match: evalue->0.45 perc_identity->100
+BS_11H12primer.ab1	4	27	90	303	27	90	TbMini002_F01_TbMni002aC01.b1_011.ab1	136	159	edit-only	blast match: evalue->0.12 perc_identity->100
+BS_11H12primer.ab1	4	27	90	303	27	90	310955i_TRBKPGUIDE	165	209	edit-only	blast match: evalue->1e-06 perc_identity->100
+BS_11H12primer.ab1	4	27	90	303	27	90	TbMii001C03.fa	165	209	edit-only	blast match: evalue->1e-06 perc_identity->100
+BS_11H12primer.ab1	4	27	90	303	27	90	TbMii002A10.fa	192	240	edit-only	blast match: evalue->0.001 perc_identity->95
+BS_11H12primer.ab1	4	27	90	303	27	90	G06	192	240	edit-only	blast match: evalue->0.001 perc_identity->95
+BS_11H12primer.ab1	4	27	90	303	27	90	TbMii001E11.fa	195	219	edit-only	blast match: evalue->0.002 perc_identity->100
+BS_11H12primer.ab1	4	27	90	303	27	90	343556_TRBKPMCC	207	228	edit-only	NOHIT

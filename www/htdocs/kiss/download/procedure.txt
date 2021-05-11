@@ -1,0 +1,71 @@
+Processing of Minicircle sequence files:
+
+1a) Download sequence files
+1b) Run base calling software on chromatogram files
+1c) Run cross match to replace vector sequence with X's
+1d) Concatenate to all minicircle sequence files to all_minicircles.fasta
+2) Get the largest Non-X portion of each transcript
+        # scripts/get_largest_nonx_portion.pl all_minicircles.fasta > all_minicircles_nonx.fasta
+3) Get all sequences larger then 300bp's (remove all small sequences)
+        # scripts/minimum_transcript_size.pl all_minicircles_nonx.fasta all_minicircles_nonx_min.fasta 300
+4) Orient transcripts based on best hit to reference minicircle
+        #  scripts/orient_transcript.pl --infile=all_minicircles_nonx_min.fasta --outfile=all_minicircles_nonx_min_orient.fasta --nomatch=file --nomatch-file=minicircles.nomatch --verbose --sequence-db=???? > logs/minicicle_orient.log
+5) Look through the minicircles.nomatch file and remove sequences that look like junk.
+6) Concatenate nomatch file and orient file
+        # cat all_minicircles_nonx_min_orient.fasta minicircles.nomatch > all_minicircles_pass.fasta
+
+Processing of gcDNA sequence files:
+
+1a) Download sequence files
+1b) Run base calling software on chromatogram files
+1c) Run cross match to replace vector sequence with X's
+1d) Concatenate to all grna sequence files to all_grna.fasta
+2) Get the largest Non-X portion of each transcript
+        # scripts/get_largest_nonx_portion.pl all_grna.fasta > all_grna_nonx.fasta
+3) Get all sequences larger then 18bp's (remove all small sequences)
+        # scripts/minimum_transcript_size.pl all_grna_nonx.fasta all_grna_nonx_min.fasta 18
+4) Create final file
+	# cp all_grna_nonx_min.fasta all_grna_pass.fasta
+
+
+
+Processing of cdna(transcript) files:
+
+1a) Download sequence files
+1b) Run base calling software on chromatogram files
+1c) Run cross match to replace vector sequence with X's
+1d) Concatenate to all cdna sequence files to all_cdna.fasta
+2) Get the largest Non-X portion of each transcript
+        # scripts/get_largest_nonx_portion.pl all_cdna.fasta > all_cdna_nonx.fasta
+3) Get all transcripts larger then 60bp's (remove all small transcripts)
+        # scripts/minimum_transcript_size.pl all_cdna_nonx.fasta all_cdna_nonx_min.fasta 60
+4) Orient transcripts based on best hit to gene database
+        #  scripts/orient_transcript.pl --infile=all_cdna_nonx_min.fasta --outfile=all_cdna_nonx_min_orient.fasta --nomatch=file --nomatch-file=cdna.nomatch --verbose --sequence-db=db/all > logs/orient.log
+5) Look through the cdna.nomatch file and remove sequences that look like junk.
+6) Concatenate nomatch file and orient file
+        # cat all_cdna_nonx_min_orient.fasta cdna.nomatch > all_cdna_pass.fasta
+7) (optional) Filter out all sequences that do not cover a portion of the edited and pre-edited sequence by a certain percentage
+        # scripts/filter_weird_transcript.pl --infile=all_cdna_pass.fasta --outfile=all_cdna_nox_min_orient_filter.fasta --nomatch=file --nomatch-file=nomatch_filter.fasta --sequence-db=db/all --verbose > logs/filter.log
+8) Run process_all.pl with all options selected (enable options by setting 0->1 on the head of the script.
+
+
+
+
+Mapping cDNA Transcripts to Maxicircle Genes
+
+
+
+Mapping Minicircle Sequences to Maxicircle Genes and cDNA Transcripts (gRNA Prediction)
+
+
+Mapping Sequenced gRNA (gcDNA) to Maxicircle Genes and cDNA Transcripts (sequenced gRNAs)
+
+
+Finding Inverted Repeats
+
+
+Mapping Conserved Features or Experimental Features (Conserved Domains, primers)
+
+
+
+

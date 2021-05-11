@@ -1,0 +1,8 @@
+cDNA Statistics
+
+Total number of cdna's of size greater then 150 is 1060
+The mean cdna size is 504.2
+The median cdna size is 502.5
+The mode cdna size is 345.0
+The stdev of the cdna size is 229.4
+This includes data between the values of 152 and 1199

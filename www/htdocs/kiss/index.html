@@ -1,0 +1,169 @@
+<html>
+<head>
+<title>KISS - A bioinformatic tool for gRNA analysis</title>
+<LINK REL="SHORTCUT ICON" HREF="http://gmod.mbl.edu/favicon.ico"> <script type="text/javascript" src="/kiss/cooltip/cCore.js"></script>
+<link rel="stylesheet" type="text/css" href="/gbrowse/gbrowse.css" />
+</head>
+
+<body>
+<div id="ctDiv" style="position: absolute; visibility: hidden; z-index: 1000;"></div>
+<table class="searchtitle" border="0" width="100%">
+        <tbody><tr>
+                <td width="70%"> <a href="/kiss/">Home</a> | <a href="/gb/gbrowse/tbgrna">Gbrowse</a> | <a href="/gb/kiss-gblast/tbgrna">Gblast</a> | <a href="/kiss/download/">Downloads</a>
+                </td>
+        </tr>
+</table>
+<p><center>Navigate</center></p>
+<table class="searchtitle" border=1 cellspacing=2 cellpadding=2 width=100%>
+<tr>
+<td>rps12</td>
+<td>nd9</td>
+<td>nd8</td>
+<td>nd7</td>
+<td>nd5</td>
+<td>nd4</td>
+<td>nd3</td>
+<td>nd1</td>
+<td>murf5</td>
+<td>a6</td>
+<td>murf2</td>
+<td>murf1</td>
+<td>cyb</td>
+<td>cr4</td>
+<td>cr3</td>
+<td>co3</td>
+<td>co2</td>
+<td>co1</td>
+<td>12S</td>
+<td>9S</td>
+</tr>
+<tr>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbrps12un"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd9un"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd8un"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd7un"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd5"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd4"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd3un"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd1"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbmurf5"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tba6un"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbmurf2un"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbmurf1"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbcybun"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbcr4un"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbcr3un"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbco3un"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbco2un"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbco1"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tb12S"><small>pre-edited</small></a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tb9S"><small>pre-edited</small></a></td>
+</tr>
+<tr>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbrps12ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd9ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd8ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd7ed">edited</a></td>
+<td></td>
+<td></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd3ed">edited</a></td>
+<td></td>
+<td></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tba6ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbmurf2ed">edited</a></td>
+<td></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbcybed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbcr4ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbcr3ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbco3ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbco2ed">edited</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+
+<center>
+	<h1>(KISS) - Kinetoplastid Insertion and Deletion Sequence Search Tool</h1>
+	<h2> A bioinformatic tool for gRNA analysis</h2>
+<hr width=40%>
+</center>
+
+<h3>Introduction</h3>
+In Kinetoplast mitochondria the posttranscriptional insertion and deletion of uridines in the mRNA (RNA editing) is templated by small noncoding RNAs named guide RNAs (gRNAs).  These 45-70 nucleotide long molecules are mainly transcribed from minicircles within the mitochondrial genome.  Trypanosoma brucei contains approximately 10,000 minicircles which fall into at least 300 different sequence classes.  In order to uncover the guiding potential within all the minicircle encoded gRNAs, we initiated a sequencing project and developed an annotation tool called KISS.  KISS is a pipeline that uses simple BLAST comparisons and inverted repeat finding (einverted, EMBOSS) to annotate potential gRNAs and their binding sites on mitochondrial transcripts.  Comparing minicircle sequences with mitochondria cDNA transcripts we were able to indentify unique putitive guide RNA genes which were then annotated as features in a Gbrowse database.. This tool can be used to visialize:
+<ol>
+<li>the possible interactions of gRNAs with pre-edited and partially edited transcripts</li>
+<li>the position of guide RNA genes on minicircles</li>
+<li>the differential editing patterns of mitochondrial mRNAs</li>
+</ol>
+<p>
+<h2>What is RNA editing?</h2>
+
+<table width=100%><tr><td>
+<img src="img/edit_1_small.png">
+</td></tr></table>
+<h3>Goals</h3>
+We have many goals in creating this resource. Our goals are to:
+<ul>
+<li>Provide a work bench for the analysis of RNA editing in Kinetoplasts</li>
+<li>Provide a well annotated set of guide RNAs, minicircles and variable transcripts</li>
+<li>Give the ability to examine and visualize differential editing patterns</li>
+<li>Determine if multiple gRNAs can edit for a specific region</li>
+<li>Determine the depth of difference in minicircle sequences</li>
+<li>Provide the ability to determine the sequence space for mitochondrial transcripts</li>
+<li>Determine the origins of gRNAs</li>
+</ul>
+Currently all of our goals are not complete, but we are working towards their completion.
+
+<h3>Tips for Users</h3>
+<p>
+These pages are best viewed with <b>Firefox</b> or <b>Safari</b>. <i>(Internet Explorer does not support all featues and might lead to improper rendering.)</i>
+</p>
+<p>
+<b>GBrowse</b> is a versatile tool to visualize sequence data. However this inevitably leads to a more complex user interface. If you are not used to work with Gbrowse it might be helpful to visit the <a href="http://www.gmod.org">Generic Model Organism Database</a> home page to make yourself familiar with the general features.
+</p>
+<p>
+<b>Hover windows</b> are used throughout the pages. They contain information to the feature you hover over. For the gRNA gene feature the hover window displays the the alignment of the gRNA to the selected maxicircle transcript at the bottom of the window. The top strand is the maxicircle sequence from 5' to 3'. The bottom strand depicts the gRNA gene from 3' to 5'. As the matching algorithm is BLAST based identities rather than complementarities are shown.
+</p>
+
+<h3>Contents of the Library</h3>
+<p>
+Minicircles and gRNAs are from T. brucei, from this and other studies.
+</p>
+<table width=90% cellpadding=6 cellspacing=6>
+<tr>
+<td valign=top>
+<h2>Statistics</h2>
+
+<h4>MINICIRCLE Statistics</h4>
+<table width=500>
+<tr><td colspan=2>Each minicircle is seen a total of 19.1 times in the dataset for minicircles greater then 300  bp's (455 sequences)</td>
+<tr><td>Total number of minicircles of size greater then 300</td><td>455</td></tr>
+<tr><td>The std deviation of the distribution of sequences seen</td><td>20.5</td></tr>
+<tr><td>The median of the distribution of sequenes seen </td><td>12</td></tr>
+<tr><td>The mode of the distribution of sequenes seen is</td><td>1</td></tr>
+
+<tr><td>The mean minicircle size</td><td>761</td></tr>
+<tr><td>The median minicircle size</td><td>770</td></tr>
+<tr><td>The stdev of the minicircle size</td><td>317</td></tr>
+</table>
+<i>*This includes data between the values of 303 bp and 2203 bp</i>
+</p>
+</table>
+
+<h4>gcDNA Statistics</h4>
+<table width=500>
+<tr><td colspan=2>Each gcDNA is seen a total of 1.5 times in the dataset for gcDNA sequences greater then 20 bp's (300 sequences)</td>
+<tr><td>Total number of gcDNA of size greater then 20</td><td>300</td></tr>
+<tr><td>The mode of the distribution of sequenes seen is</td><td>1</td></tr>
+
+<tr><td>The mean gcDNA size</td><td>45</td></tr>
+</table>
+<i>*This includes data between the values of 21 bp and 60 bp</i>
+</p>
+</table>
+</td></tr>
+</td></tr>
+<center>In case of questions and or problems please contact: <A href="mailto:ochsenreiter@bmb.uga.edu">Dr. Torsten Ochsenreiter</a> </center>
+</body>
+</html>

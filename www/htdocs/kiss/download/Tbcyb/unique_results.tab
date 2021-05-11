@@ -1,0 +1,65 @@
+Transcript name	pre-edit start	pre-edit stop	edit start	edit stop	junction start	junction stop	gRNA name	gRNA start	gRNA stop	junction type	blast vs. parent
+TO161203_H08_B8D04M13R_026.ab1	93	1132	93	1132	0	0	TbMini002_P16_TbMni002aH08.g1_050.ab1	99	120	overlap-nojunction	NOHIT
+TO161203_H08_B8D04M13R_026.ab1	93	1132	93	1132	0	0	TbMii001D01.fa	486	508	overlap-nojunction	NOHIT
+TO161203_H08_B8D04M13R_026.ab1	93	1132	93	1132	0	0	TbMii001D10.fa	942	963	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_H08_B8D04M13R_026.ab1	93	1132	93	1132	0	0	F01	942	963	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO171203_P08_B12H04M13R_018.ab1	93	1139	93	1139	0	0	TbMini002_J12_TbMni002aE06.g1_040.ab1	5	26	odd-structure	blast match: evalue->0.15 perc_identity->100
+TO171203_P08_B12H04M13R_018.ab1	93	1139	93	1139	0	0	TbMini002_E15_TbMini002C08.b1_060.ab1	160	181	overlap-nojunction	NOHIT
+TO171203_P08_B12H04M13R_018.ab1	93	1139	93	1139	0	0	TbMini002_M15_TbMini002G08.b1_052.ab1	165	188	overlap-nojunction	blast match: evalue->0.18 perc_identity->100
+TO171203_P08_B12H04M13R_018.ab1	93	1139	93	1139	0	0	TbMii001D01.fa	493	515	overlap-nojunction	NOHIT
+TO171203_P08_B12H04M13R_018.ab1	93	1139	93	1139	0	0	TbMii001D10.fa	949	970	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO171203_P08_B12H04M13R_018.ab1	93	1139	93	1139	0	0	F01	949	970	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_L15_B6F08M13R_054.ab1	21	1113	55	1113	0	0	TbMii001D01.fa	467	489	overlap-nojunction	NOHIT
+TO161203_L15_B6F08M13R_054.ab1	21	1113	55	1113	0	0	TbMii001D10.fa	923	944	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_L15_B6F08M13R_054.ab1	21	1113	55	1113	0	0	F01	923	944	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_L15_B6F08M13R_054.ab1	21	1113	55	1113	0	0	437720_TRBINVRPTH	1113	1134	odd-structure	blast match: evalue->0.010 perc_identity->100
+TO161203_L22_B8F11M13R_085.ab1	54	1089	54	1089	0	0	TbMii001D10.fa	899	920	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_L22_B8F11M13R_085.ab1	54	1089	54	1089	0	0	F01	899	920	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_L22_B8F11M13R_085.ab1	54	1089	54	1089	0	0	TbMini002_K11_TbMini002F06.b1_038.ab1	1078	1100	odd-structure	blast match: evalue->0.041 perc_identity->100
+TO171203_H23_B10D12M13R_090.ab1	38	1067	38	1067	0	0	TbMii001D10.fa	877	898	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO171203_H23_B10D12M13R_090.ab1	38	1067	38	1067	0	0	F01	877	898	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO151203_G01_B1D01m13r_009.ab1	4	538	4	538	0	0	TbMii001D10.fa	348	369	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO151203_G01_B1D01m13r_009.ab1	4	538	4	538	0	0	F01	348	369	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO151203_G01_B1D01m13r_009.ab1	4	538	4	538	0	0	TbMini002_M21_TbMini002G11.b1_083.ab1	537	558	odd-structure	blast match: evalue->0.002 perc_identity->100
+TO151203_E07_B1C04m13r_028.ab1	4	630	4	630	0	0	TbMii001D10.fa	440	461	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO151203_E07_B1C04m13r_028.ab1	4	630	4	630	0	0	F01	440	461	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_O20_B7H10M13R_066.ab1	99	1075	99	1075	0	0	TbMini002_C04_TbMini002B02.g1_014.ab1	32	53	odd-structure	NOHIT
+TO161203_O20_B7H10M13R_066.ab1	99	1075	99	1075	0	0	TbMii001D10.fa	885	906	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_O20_B7H10M13R_066.ab1	99	1075	99	1075	0	0	F01	885	906	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO171203_G17_B9D09M13R_073.ab1	53	1079	53	1079	0	0	TbMini002_C17_TbMini002B09.b1_077.ab1	98	119	overlap-nojunction	NOHIT
+TO171203_G17_B9D09M13R_073.ab1	53	1079	53	1079	0	0	TbMii001D10.fa	889	910	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO171203_G17_B9D09M13R_073.ab1	53	1079	53	1079	0	0	F01	889	910	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO151203_F16_B4C08m13r_060.ab1	4	336	4	336	0	0	TbMii001D10.fa	146	167	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO151203_F16_B4C08m13r_060.ab1	4	336	4	336	0	0	F01	146	167	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_O14_B7H07M13R_049.ab1	11	560	11	560	0	0	TbMini002_F06_TbMni002aC03.g1_027.ab1	271	292	overlap-nojunction	blast match: evalue->0.15 perc_identity->100
+TO161203_O14_B7H07M13R_049.ab1	11	560	11	560	0	0	TbMii001D10.fa	373	394	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_O14_B7H07M13R_049.ab1	11	560	11	560	0	0	F01	373	394	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_O14_B7H07M13R_049.ab1	11	560	11	560	0	0	TbMini002_G15_TbMini002D08.b1_058.ab1	441	466	overlap-nojunction	blast match: evalue->0.20 perc_identity->100
+TO161203_O14_B7H07M13R_049.ab1	11	560	11	560	0	0	TbMini002_M07_TbMini002G04.b1_020.ab1	443	465	overlap-nojunction	blast match: evalue->0.16 perc_identity->100
+TO161203_O14_B7H07M13R_049.ab1	11	560	11	560	0	0	TbMini002_J22_TbMni002aE11.g1_087.ab1	447	468	overlap-nojunction	blast match: evalue->0.15 perc_identity->100
+TO161203_O14_B7H07M13R_049.ab1	11	560	11	560	0	0	TbMini002_D03_TbMni002aB02.b1_014.ab1	513	534	overlap-nojunction	blast match: evalue->0.002 perc_identity->100
+TO171203_K10_B11F05M13R_037.ab1	4	424	4	424	0	0	TbMii001D10.fa	234	255	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO171203_K10_B11F05M13R_037.ab1	4	424	4	424	0	0	F01	234	255	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_G12_B7D06M13R_042.ab1	45	1126	101	1126	0	0	TbMini002_A03_TbMini002A02.b1_016.ab1	38	64	odd-structure	blast match: evalue->0.21 perc_identity->100
+TO161203_G12_B7D06M13R_042.ab1	45	1126	101	1126	0	0	TbMini002_C21_TbMini002B11.b1_093.ab1	100	121	overlap-nojunction	blast match: evalue->0.15 perc_identity->100
+TO161203_G12_B7D06M13R_042.ab1	45	1126	101	1126	0	0	TbMini002_I21_TbMini002E11.b1_087.ab1	100	121	overlap-nojunction	blast match: evalue->0.15 perc_identity->100
+TO161203_G12_B7D06M13R_042.ab1	45	1126	101	1126	0	0	437714_TRBINVRPTB	215	237	overlap-nojunction	blast match: evalue->0.010 perc_identity->94.1176470588235
+TO161203_G12_B7D06M13R_042.ab1	45	1126	101	1126	0	0	TbMii001D10.fa	936	957	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO161203_G12_B7D06M13R_042.ab1	45	1126	101	1126	0	0	F01	936	957	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+PC_9B08primer.ab1	2	626	2	626	0	0	437715_TRBINVRPTC	331	352	overlap-nojunction	blast match: evalue->0.15 perc_identity->100
+PC_9B08primer.ab1	2	626	2	626	0	0	TbMii001D10.fa	438	459	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+PC_9B08primer.ab1	2	626	2	626	0	0	F01	438	459	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO171203_C11_B9B06M13R_046.ab1	28	1125	96	1125	0	0	TbMii001D01.fa	103	124	overlap-nojunction	blast match: evalue->0.15 perc_identity->100
+TO171203_C11_B9B06M13R_046.ab1	28	1125	96	1125	0	0	TbMii001D01.fa	479	501	overlap-nojunction	NOHIT
+TO171203_C11_B9B06M13R_046.ab1	28	1125	96	1125	0	0	TbMii001D10.fa	935	956	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO171203_C11_B9B06M13R_046.ab1	28	1125	96	1125	0	0	F01	935	956	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO171203_C11_B9B06M13R_046.ab1	28	1125	96	1125	0	0	TbMini002_K11_TbMini002F06.b1_038.ab1	1114	1136	odd-structure	blast match: evalue->0.041 perc_identity->100
+TO171203_K02_B11F01M13R_005.ab1	95	1116	95	1116	0	0	TbMini002_I01_TbMini002E01.b1_007.ab1	4	28	odd-structure	blast match: evalue->0.012 perc_identity->100
+TO171203_K02_B11F01M13R_005.ab1	95	1116	95	1116	0	0	TbMini002_G22_TbMini002D11.g1_089.ab1	13	38	odd-structure	blast match: evalue->0.013 perc_identity->100
+TO171203_K02_B11F01M13R_005.ab1	95	1116	95	1116	0	0	A03	80	102	odd-structure	blast match: evalue->0.16 perc_identity->100
+TO171203_K02_B11F01M13R_005.ab1	95	1116	95	1116	0	0	TbMini002_H17_TbMni002aD09.b1_073.ab1	109	135	overlap-nojunction	NOHIT
+TO171203_K02_B11F01M13R_005.ab1	95	1116	95	1116	0	0	TbMii001D10.fa	926	947	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO171203_K02_B11F01M13R_005.ab1	95	1116	95	1116	0	0	F01	926	947	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO171203_K02_B11F01M13R_005.ab1	95	1116	95	1116	0	0	TbMini002_A03_TbMini002A02.b1_016.ab1	1133	1154	odd-structure	blast match: evalue->2e-04 perc_identity->100
+TO151203_J05_B2E03m13r_023.ab1	4	226	4	226	0	0	TbMii001D10.fa	36	57	overlap-nojunction	blast match: evalue->0.010 perc_identity->100
+TO151203_J05_B2E03m13r_023.ab1	4	226	4	226	0	0	F01	36	57	overlap-nojunction	blast match: evalue->0.010 perc_identity->100

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cp gff/grna.fasta .;
+cp grna.fasta db/grna;
+cd db;
+xdformat -n grna
+formatdb -p F -i grna
+cd ..
+rm -f temp/fasta.index
+

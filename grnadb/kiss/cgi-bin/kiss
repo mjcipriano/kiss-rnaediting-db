@@ -1,0 +1,311 @@
+#!/usr/bin/perl
+
+
+use strict;
+use Bio::DB::GFF;
+use CGI qw/:standard/;
+use Bio::Seq;
+
+my $db_name = param('db');
+my $db = Bio::DB::GFF->new( 	-adaptor => 'dbi::mysqlopt',
+				-dsn	=> "dbi:mysql:$db_name:gmoddb",
+				-user	=> 'gid',
+				-password	=> 'gidgid123'
+			);
+
+
+
+# Pull out all gene features
+
+print header();
+print '<head>
+<title>KISS - A bioinformatic tool for gRNA analysis</title>
+<LINK REL="SHORTCUT ICON" HREF="http://gmod.mbl.edu/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/gbrowse/gbrowse.css" />
+<script type="text/javascript" src="/javascript/overlib.js"></script>
+</head>
+';
+print "<body>";
+print '<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>' . "\n";
+
+print '
+<center>
+        <h1>(KISS) - Kinetoplastid Insertion and Deletion Sequence Search Tool</h1>
+        <h2> A bioinformatic tool for gRNA analysis</h2>
+<hr width=40%>
+</center>
+
+';
+if(param('gene'))
+{
+	my $gene_name = param('gene');
+	my $sort_by = param('sort_by');
+	if(!defined($sort_by))
+	{
+		$sort_by = 'perc_un';
+	}
+
+	print "<center>";
+
+
+	my $transcripts;
+
+	# If this ends in "un" or "ed" then we must also find the reverse
+
+	print "<h2>Gene: " . gbrowse_link($gene_name);
+	my $other_name = $gene_name;
+	my $do_other = 0;
+	if($gene_name =~ /un$/)
+	{
+		$other_name =~ s/un$/ed/;
+		$do_other = 1;
+		print " and " . gbrowse_link($other_name);
+	}
+
+	if($gene_name =~ /ed$/)
+	{
+		$other_name =~ s/ed$/un/;
+		$do_other = 1;
+		print " and " . gbrowse_link($other_name);
+	}
+	print "</h2>";
+
+	my @genes = $db->get_feature_by_name(-class=>'Sequence', -name=>$gene_name);
+	foreach my $gene (@genes)
+	{
+
+		# Now pull out all transcripts of this gene
+		my $gene_segment = $db->segment($gene->name);
+		my @transcripts = $gene_segment->features('specific_bloodstream', 'specific_procyclic', 'dt_primed');
+		foreach my $transcript (@transcripts)
+		{
+			my $est_name = $transcript->attributes('est_name');
+			$transcripts->{$transcript->attributes('est_name')} = 1;
+		}
+	}
+
+	if($do_other)
+	{
+		# Now other
+		my @genes = $db->get_feature_by_name(-class=>'Sequence', -name=>$other_name);
+		foreach my $gene (@genes)
+		{
+	
+			# Now pull out all transcripts of this gene
+			my $gene_segment = $db->segment($gene->name);
+			my @transcripts = $gene_segment->features('specific_bloodstream', 'specific_procyclic', 'dt_primed');
+			foreach my $transcript (@transcripts)
+			{
+				my $est_name = $transcript->attributes('est_name');
+				$transcripts->{$transcript->attributes('est_name')} = 1;
+			}
+		}
+	}
+
+	my $un;
+	my $ed;
+	while(my ($est_name, undef) = each(%$transcripts))
+	{
+		my @features = $db->get_feature_by_attribute(est_name=>$est_name);
+		foreach my $feat (@features)
+		{
+			# Print it's parent
+			# Create a hash
+			my $vals;
+			$vals->{parent} = $feat->refseq;
+			if($feat->refseq =~ /ed$/)
+			{
+				$ed->{$est_name}->{obj} = $feat;
+			} else
+			{
+				$un->{$est_name}->{obj} = $feat;
+			}
+		}
+	}
+
+	# Now go through the est's again and print out a table;
+
+	print "<table border=1>";
+	print TR( td("clone name"), 
+		td(a( { -href=>"?db=$db_name&gene=$gene_name&sort_by=size"}, "Length") ), 
+		td("pre-edit range"), 
+		td(a({ -href=>"?db=$db_name&gene=$gene_name&sort_by=perc_un"},"% pre-edited")), 
+		td("edited range"), 
+		td(a({ -href=>"?db=$db_name&gene=$gene_name&sort_by=perc_ed"},"% edited")), 
+		td("% neither"),
+		td("orf")
+		);
+
+
+	# TOOD- Sort by % pre-edited
+	my %sorted_transcripts;
+	while(my ($est_name, undef) = each(%$transcripts))
+	{
+		my @transcripts = $db->get_feature_by_name(-class=>'Sequence', -name=>$est_name);
+		my $size = 1;
+		if(defined($transcripts[0]))
+		{
+			my $seq = $transcripts[0]->seq;
+			$size = length($seq);
+		}
+		$sorted_transcripts{$est_name}->{size} = $size;
+		if(defined($un->{$est_name}) )
+                {
+                        # Get the percent edited portion
+                        my $perc_un = abs($un->{$est_name}->{obj}->stop - $un->{$est_name}->{obj}->start + 1)/ $size * 100;
+			$sorted_transcripts{$est_name}->{perc_un} = $perc_un;
+		} else
+		{
+			$sorted_transcripts{$est_name}->{perc_un} = 0;
+		}
+		if(defined($ed->{$est_name}) )
+                {
+                        my $perc_ed = abs($ed->{$est_name}->{obj}->stop - $ed->{$est_name}->{obj}->start + 1)/ $size * 100;
+			$sorted_transcripts{$est_name}->{perc_ed} = $perc_ed;
+                } else
+		{
+			$sorted_transcripts{$est_name}->{perc_ed} = 0;
+		}
+
+
+	}
+	my @sorted_transcripts_array = sort{$sorted_transcripts{$b}->{$sort_by} <=> $sorted_transcripts{$a}->{$sort_by} } keys %sorted_transcripts;
+	foreach my $est_name (@sorted_transcripts_array)
+	{
+		# Get this sequence transcript
+		my @transcripts = $db->get_feature_by_name(-class=>'Sequence', -name=>$est_name);
+		my $size = 1;
+		my $seq;
+		if(defined($transcripts[0]))
+		{
+			$seq = $transcripts[0]->seq;
+			$size = length($seq);
+			
+		}
+
+		if($size < 70)
+		{
+			next;
+		}
+		my @transcript_seq;
+		for(1..$size)
+		{
+			my $pos = $_;
+			$transcript_seq[$pos] = 0;
+		}
+		my $perc_un = 0;
+		my $perc_ed = 0;
+		print "<tr>\n";
+		print td( gbrowse_link($est_name) );
+		print td($size);
+		if(defined($un->{$est_name}) )
+		{
+			# Get the percent edited portion
+			my $range_text = $un->{$est_name}->{obj}->start . ".." . $un->{$est_name}->{obj}->stop;
+			print td(est_alignment_over($un->{$est_name}->{obj}, $range_text) );
+			print td( sprintf("%.2f", $sorted_transcripts{$est_name}->{perc_un}) . "%");
+			for($un->{$est_name}->{obj}->attributes('query_start')..$un->{$est_name}->{obj}->attributes('query_stop') )
+			{
+				my $pos = $_;
+				$transcript_seq[$pos] = $transcript_seq[$pos] + 1;
+			}
+		} else
+		{
+			print td('&nbsp;'), td('&nbsp;');
+		}
+		if(defined($ed->{$est_name}) )
+		{
+			my $range_text = $ed->{$est_name}->{obj}->start . ".." . $ed->{$est_name}->{obj}->stop;
+			print td(est_alignment_over($ed->{$est_name}->{obj}, $range_text) );
+			print td( sprintf("%.2f", $sorted_transcripts{$est_name}->{perc_ed}) . "%");
+			for($ed->{$est_name}->{obj}->attributes('query_start')..$ed->{$est_name}->{obj}->attributes('query_stop'))
+			{
+				my $pos = $_;
+				$transcript_seq[$pos] = $transcript_seq[$pos] + 2;
+			}
+		} else
+		{
+			print td('&nbsp;'), td('&nbsp;');
+		}
+		my $len_neither = 0;
+		for(1..$size)
+		{
+			my $pos = $_;
+			if($transcript_seq[$pos] == 0)
+			{
+				$len_neither++;
+			}
+		}
+		my $perc_neither = ($len_neither / $size) * 100;
+		print td( sprintf("%.2f", $perc_neither) . "%");
+		# Find longest ORF
+		my $seqobj = Bio::Seq->new(-display_id=>$est_name, -seq=>$seq);
+			
+		
+	}
+	print "</table>";
+	print "</center>";
+}
+
+
+
+print "</body>";
+
+
+sub self_link
+{
+#	return "?db=$db_name&gene=$gene_name";
+}
+
+sub gbrowse_link
+{
+	my $name = shift;
+
+	return '<a href="/gb/gbrowse/' . $db_name . '?name=' . $name . '">' . "$name</a>";
+}
+
+
+
+
+                sub est_alignment_over {
+                        my $feature = shift;
+			my $name = shift;
+                        my @types = ('specific_bloodstream', 'specific_procyclic', 'dt_primed','specific_bloodstream_fraction_11', 'specific_bloodstream_fraction_9','specific_procyclic_fraction_11','specific_procyclic_fraction_9' );
+                        my @list = $db->features(-types=>\@types, -attributes=>{est_name => $feature->attributes('est_name')} );
+                        my $hsp_string;
+                        foreach my $feat (@list)
+                        {
+                                $hsp_string .= 'add=' . $feature->attributes('est_name')  . '+%22Gene%20Matches%22+' . $feat->attributes('gene_type_match') . '+' . $feat->attributes('query_start') . '-' . $feat->attributes('query_stop') . ';';
+                        }
+                        my @hit_array = split /(.{80})/, uc($feature->attributes('hit_string'));
+                        my @query_array = split /(.{80})/, uc($feature->attributes('query_string'));
+                        my @homology_array = split /(.{80})/, $feature->attributes('homology_string');
+                        chomp(@hit_array);
+                        chomp(@query_array);
+                        chomp(@homology_array);
+                        my $alignment = '<a href=\&quot;/gb/gbrowse/grna?name=' . $feature->attributes('est_name') . '\&quot;>' . $feature->attributes('est_name') . '</a><br>';
+                        $alignment .= '<center><img src=\&quot;/gb/gbrowse_img/grna?name=' . $feature->attributes('est_name') . ';width=500;' . $hsp_string . '\&quot;></center>';
+                        $alignment .= "<br><pre>";
+                        my $first = 1;
+                        for(my $i = 0;$i < scalar(@hit_array);$i++)
+                        {
+                                if($hit_array[$i] eq "")
+                                {
+                                        next;
+                                }
+                                if($first == 1)
+                                {
+                                        $alignment .= $feature->start . "\t" . $hit_array[$i] . "<br>\t" . $homology_array[$i] . "<br>" . $feature->attributes('query_start') . "\t" . $query_array[$i] . "<br><br>";
+                                        $first = 0;
+                                } else
+                                {
+                                        $alignment .= "\t" . $hit_array[$i] . "<br>\t" . $homology_array[$i] . "<br>\t" . $query_array[$i] . "<br><br>";
+                                }
+                        }
+                        $alignment .= "</pre>";
+#                        my $float = $feature->attributes('grna_sequence') . '<br><pre>' .  $feature->start . "\t" . $feature->attributes('hit_string') .  ' ' . $feature->stop . "<br>\t" . $feature->attributes('homology_string') . "<br>" . $feature->attributes('query_start') . "\t" . $feature->attributes('query_string') . ' ' . $feature->attributes('query_stop') . '</pre>';
+                        my $link = '/gb/gbrowse/grna?name=' . $feature->name . ";class=EST";
+                        my $retval =  '<a href="' . $link . ';" onmouseover="return overlib(\'' . $alignment . '\', MOUSEOFF, STICKY, WIDTH, 400);" onmouseout="return nd();' . '">' . $name . '</a>';
+                        return $retval;
+                }
+

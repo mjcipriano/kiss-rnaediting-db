@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>README-chado</title>
+<link rev="made" href="mailto:feedback@suse.de" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#support_for_the_chado_database_schema">Support for the chado database schema</a></li>
+	<li><a href="#creating_a_configuration_file">Creating a configuration file</a></li>
+	<ul>
+
+		<li><a href="#bugs">Bugs</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="support_for_the_chado_database_schema">Support for the chado database schema</a></h1>
+<p>The chado schema ( <a href="http://www.gmod.org/schema">http://www.gmod.org/schema</a> ) is a comprehensive database
+schema developed largely by developers at UC Berkeley and Harvard working
+on FlyBase.  It is intended to be a generic database schema for model
+organism use.  Its use with GBrowse is supported via a limited implementation
+of the Das interface from BioPerl.  It is limited in that I implemented 
+only what I needed of the interface and nothing more.</p>
+<p>The chado adaptor works through three perl modules included in this 
+distribution:</p>
+<pre>
+  lib/Bio/DB/Das/Chado.pm
+  lib/Bio/DB/Das/Chado/Segment.pm
+  lib/Bio/DB/Das/Chado/Segment/Feature.pm</pre>
+<p>These files are installed the in the BioPerl infastructure when 'make install' 
+is run.</p>
+<p>A sample chado configuration file is included in contrib/conf_files/.  
+Since chado uses the Sequence Ontology for its controlled vocabulary, it
+is quite likely that this configuration file should work for any
+instance of chado once the database-specific parameters are set.
+Also, depending on what the ``reference type'' is (usually something
+like 'chromosome' or 'contig'), the line in the configuration for 
+reference class will need to be modified to agree with your data.</p>
+<p>After the tables are created, the user that is running Apache must
+be granted privileges to select on several tables.  Usually that
+user is 'nobody', although on RedHat systems using RPM installed Apache
+the user is 'apache'.  First create that user in Postgres, then in the
+psql shell grant select permissions:</p>
+<pre>
+  CREATE USER nobody;
+  GRANT SELECT ON feature_synonym      TO nobody;
+  GRANT SELECT ON synonym              TO nobody;
+  GRANT SELECT ON feature_dbxref       TO nobody;
+  GRANT SELECT ON dbxref               TO nobody;
+  GRANT SELECT ON feature              TO nobody;
+  GRANT SELECT ON featureloc           TO nobody;
+  GRANT SELECT ON cvterm               TO nobody;
+  GRANT SELECT ON feature_relationship TO nobody;
+  GRANT SELECT ON cv                   TO nobody;
+  GRANT SELECT ON gffatts              TO nobody;
+  GRANT SELECT ON feature_cvterm       TO nobody;
+  GRANT SELECT ON feature_gcontext     TO nobody;
+  GRANT SELECT ON gcontext             TO nobody;
+  GRANT SELECT ON featureprop          TO nobody;
+  GRANT SELECT ON pub                  TO nobody;
+  GRANT SELECT ON feature_pub          TO nobody;
+  GRANT SELECT ON db                   TO nobody;</pre>
+<p>
+</p>
+<hr />
+<h1><a name="creating_a_configuration_file">Creating a configuration file</a></h1>
+<p>The GBrowse configuration file for a chado database is the same format
+as for any other data source, but there are a few notes specific to
+chado for GBrowse configuration files.  A sample configuration file
+called 07.chado.conf is included in the contrib/conf_files directory
+of this distribution, and is installed in $HTDOCS/gbrowse/contrib/conf_files.</p>
+<p>Two items specific to chado that must go into the configuration file:</p>
+<dl>
+<dt><strong><a name="item_reference_class">Reference class</a></strong><br />
+</dt>
+<dd>
+The reference class in configuration file must be the Sequence Ontology-
+Feature Annotation (SOFA) type that is the feature type in chado that
+is the foundation type, like 'chromosome', 'region' or 'contig', the 
+the other features in the database are on.
+</dd>
+<p></p>
+<dt><strong><a name="item_aggregators">Aggregators</a></strong><br />
+</dt>
+<dd>
+Aggregators must not be used with the chado adaptor, as they aren't needed
+and don't make sense in this context.  They are used in Bio::DB::GFF
+to construct complex biological objects out of the flat data in
+GFF files, for example, attaching exons to their mRNA.  In chado, this
+isn't necessary since the relationship between features is clearly
+defined in the feature_relationship table, and that information
+is automatically obtained by the chado adaptor.
+</dd>
+<p></p>
+<dt><strong><a name="item_db_args">db_args</a></strong><br />
+</dt>
+<dd>
+You can add db args to fine tune some parameters of the adapter:
+</dd>
+<dd>
+<pre>
+  db_args      = -dsn yourConnectString
+                 -enable_seqscan 0
+                 -srcfeatureslice 1
+                 -do2Level 1</pre>
+</dd>
+<dd>
+<p>enable_seqscan : set this to 0 to force the use of your indexes if your dba hasn't set it globally. It triggers a 'set enable_seqscan=0' sql command if set to 0, and nothing otherwise.</p>
+</dd>
+<dd>
+<p>srcfeatureslice : toggle the use of  featureloc_slice(srcfeat_id, int, int) instead of featureslice(int, int). featureloc_slice is part of the 0.01 version of chado</p>
+</dd>
+<dd>
+<p>do2Level : prefectchs the direct kids of a feature, thus avoiding subsequents queries. It provides a slight performances boost in most cases.</p>
+</dd>
+<p></p></dl>
+<p>
+</p>
+<h2><a name="bugs">Bugs</a></h2>
+<p>If you encounter any bugs or problems with this chado adaptor, please
+let me know.</p>
+<p>Scott Cain
+<a href="mailto:cain@cshl.edu">cain@cshl.edu</a>
+2005/03/10</p>
+
+</body>
+
+</html>

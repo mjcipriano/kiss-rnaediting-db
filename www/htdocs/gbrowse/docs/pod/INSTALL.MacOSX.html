@@ -1,0 +1,569 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>INSTALL.MacOSX</title>
+<link rev="made" href="mailto:feedback@suse.de" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#installing_the_generic_genome_browser_on_mac_os_x">Installing the Generic Genome Browser on Mac OS X</a></li>
+	<ul>
+
+		<li><a href="#1__hardware_requirements">1. Hardware requirements</a></li>
+		<li><a href="#2__installation_options">2. Installation options</a></li>
+		<li><a href="#installing_gbrowse_using_the_package_installer">Installing GBrowse using the package installer</a></li>
+		<li><a href="#installing_gbrowse_using_the_build_scripts">Installing GBrowse using the build scripts</a></li>
+		<li><a href="#4__installing_gbrowse_manually">4. Installing GBrowse manually</a></li>
+		<li><a href="#_software_requirements">- Software requirements</a></li>
+		<li><a href="#_installing_prerequisites">- Installing prerequisites</a></li>
+		<li><a href="#_installing_optional_components">- Installing optional components</a></li>
+		<li><a href="#_installing_the_generic_genome_browser">- Installing the Generic Genome Browser</a></li>
+		<li><a href="#_populating_the_database">- Populating the database</a></li>
+		<li><a href="#_configuring_apache">- Configuring Apache</a></li>
+		<li><a href="#_testing_the_browser">- Testing the Browser</a></li>
+	</ul>
+
+	<li><a href="#authors">Authors</a></li>
+	<li><a href="#copyright_information">Copyright information</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<hr />
+<h1><a name="installing_the_generic_genome_browser_on_mac_os_x">Installing the Generic Genome Browser on Mac OS X</a></h1>
+<p>This document will guide you through the steps necessary to install
+the Generic Genome Browser (GBrowse) on a stock Mac OS X system.</p>
+<p>
+</p>
+<h2><a name="1__hardware_requirements">1. Hardware requirements</a></h2>
+<p>The minimum suggested hardware is:</p>
+<pre>
+    Mac OS X.2 (Jaguar or above)
+    500 Mhz G4 or higher
+    512 MB RAM
+    1 gigabyte free disk space (more depending on database size)</pre>
+<p>
+</p>
+<h2><a name="2__installation_options">2. Installation options</a></h2>
+<p>You have three (3!) options for installing GBrowse on OS X.</p>
+<pre>
+       1. As a downloadable package
+       2. Using the build scripts located in the contrib directory
+       3. Manually, by following the steps in this document</pre>
+<p>
+</p>
+<h2><a name="installing_gbrowse_using_the_package_installer">Installing GBrowse using the package installer</a></h2>
+<p>GBrowse is a large and complicated set of software components.  Have a
+look at the software requirements listed below.  There are many
+dependencies which require custom configurations of the install
+process.  It is strongly recommended that you use the package
+installer which has already resolved many of these difficulties,
+ensuring that all components work together appropriately.</p>
+<p>To install the Package, simply double click on it and follow the
+included documentation.  The package also includes an installer for
+the MySQL database.</p>
+<p>The package installer will:</p>
+<pre>
+     1. Install all required libraries
+     2. (Optionally) install the MySQL database
+     3. Install GBrowse
+     4. Configure your system for GBrowse, including building a
+        sample database</pre>
+<p>Once installed, you may wish to read the sections on ``Populating the
+database'' below.</p>
+<p>
+</p>
+<h2><a name="installing_gbrowse_using_the_build_scripts">Installing GBrowse using the build scripts</a></h2>
+<p>GBrowse is distributed with scripts that automate the fetching and
+building of GBrowse and all of its software dependencies.  These
+scripts are locate in contrib/install_macosx.</p>
+<p>For example, to build GBrowse on Mac OS X,</p>
+<pre>
+    % cd contrib/install_macosx
+    % make libraries  (wait and wait and wait)
+    % make gbrowse</pre>
+<p>See the README in contrib/macosx_install for additional details.</p>
+<p>
+</p>
+<h2><a name="4__installing_gbrowse_manually">4. Installing GBrowse manually</a></h2>
+<dl>
+<dt><strong><a name="item_fundamental_installation_obstacles">Fundamental installation obstacles</a></strong><br />
+</dt>
+<dd>
+Many of the differences in the installation process are due to slight
+differences in paths in MacOS X.  If you run into installation
+difficulties, first check the paths for installations and
+dependencies!
+</dd>
+<dd>
+<p>Note: Throughout this document, commands to be typed at the command
+line by the root user begin with a ``$''.  Those requiring a
+non-privileged user begin with a ``%''.  When lines to be typed at the
+command line are too long, they are broken by a backslash (\).</p>
+</dd>
+<dd>
+<p>This document primarily deals with a Genome Browser installation that
+does not rely on Fink.  I think that it introduces to much of a
+``black-box'' element.  In the end, I think it is far easier to build
+and configure everything yourself in standard unix paths.  When
+something breaks, it's far easier to trouble shoot things that you
+yourself have built.</p>
+</dd>
+<p></p></dl>
+<p>
+</p>
+<h2><a name="_software_requirements">--- Software requirements</a></h2>
+<p>You will need the following software packages (the specific versions
+refered to have been tested for this installation document):</p>
+<ol>
+<li><strong><a name="item_apple_27s_developer_tools_2c_december_2002_release">Apple's Developer Tools, December 2002 release</a></strong><br />
+</li>
+The Developer Tools include compilers and unix utilities required for
+installing packages.
+<pre>
+  <a href="http://www.apple.com/developer">http://www.apple.com/developer</a></pre>
+<p></p>
+<li><strong><a name="item_apple_27s_x11_package_and_x11_sdk_2c_public_beta_3">Apple's X11 Package and X11 SDK, Public Beta 3 or higher</a></strong><br />
+</li>
+X11 is a windowing system developed for unix platforms.  Apple
+provides a convenient mechanism for installing X11 in a single
+precompiled package.  You will also need the X11 SDK which provides
+additional libraries.
+<pre>
+  <a href="http://www.apple.com/macosx/x11/">http://www.apple.com/macosx/x11/</a></pre>
+<p></p>
+<li><strong><a name="item_the_mysql_database_2c_version_3_2e23_2e39_or_highe">The MySQL database, version 3.23.39 or higher</a></strong><br />
+</li>
+The MySQL database is a fast open source relational database that is
+widely used for web applications.
+<pre>
+  <a href="http://www.mysql.com">http://www.mysql.com</a></pre>
+<p></p>
+<li><strong><a name="item_perl_2c_version_5_2e005_or_higher">Perl, version 5.005 or higher</a></strong><br />
+</li>
+Preinstalled on MacOS X.
+<pre>
+  <a href="http://www.perl.org">http://www.perl.org</a></pre>
+<p></p>
+<li><strong><a name="item_perl_modules">Perl modules</a></strong><br />
+</li>
+<pre>
+    1. Digest::MD5 2.16 or higher
+    2. GD 2.06 or higher
+    3. Storable 1.013 or higher
+    4. DBI 1.19 or higher
+    5. DBD::mysql 2.0416 or higher
+    6. Text::Shellwords
+    7. IO::String</pre>
+<p>The following are optional</p>
+<pre>
+    1. XML::Twig 3.04 or higher
+    2. XML::Dom 1.34 or higher
+    3. XML::Writer 0.4 or higher
+    4. XML::Parser 2.30 or higher
+    5. LWP 5.53 or higher</pre>
+<p>If these modules are present, the ``Sequence Dumper'' plugin will be
+able to produce GAME and BSML output.  They can be downloaded from
+CPAN. The LWP module enables loading of remote 3rd party
+annotations.</p>
+<li><strong><a name="item_libraries">Libraries</a></strong><br />
+</li>
+<pre>
+    1. zlib 1.14 or higher
+    2. libjpeg 6b or higher
+    3. libpng 1.25 or higher
+    4. libgd 2.0.15 or higher
+    5. expat 1.95.6 or higher</pre>
+<li><strong><a name="item_bioperl_package_2c_vers_1_2e2_2e3_or_higher">BioPerl package, vers 1.2.3 or higher</a></strong><br />
+</li>
+<pre>
+  <a href="http://www.bioperl.org/">http://www.bioperl.org/</a></pre>
+<li><strong><a name="item_higher">Apache 1.3.26 or higher (http://www.apache.org)</a></strong><br />
+</li>
+The Apache web server is the industry standard open source web server
+for Unix and Windows systems. Preinstalled on Mac OS X.
+<p></p>
+<li><strong><a name="item_the_generic_genome_browser_package_2c_version_1_2e">The Generic Genome Browser package, version 1.54 or higher</a></strong><br />
+</li>
+<pre>
+  <a href="http://www.gmod.org/">http://www.gmod.org/</a></pre>
+</ol>
+<p>
+</p>
+<h2><a name="_installing_prerequisites">--- Installing prerequisites</a></h2>
+<ol>
+<li><strong><a name="item_x11">X11</a></strong><br />
+</li>
+X11 is a windowing system developed for Unix platforms.  Many unix
+applications require X11 (that is, they do not run within the Mac
+environment directly).
+<p>Apple has made this incredibly easy with a downloadable package.  X11
+can also be installed via Fink, but this will not be discussed
+here. Furthermore, the Apple installation of X11 runs side-by-side
+with the Mac OS in windows that look and behave exactly like standard
+Mac OS windows, and is optimized for the graphical capabilities of Mac
+OS X.  Thus, you can run unix applications side-by-side Mac
+applications!</p>
+<p>Once installed, X11 also opens up lots of other useful options for
+your system. For example, you can easily install the preeminent text
+editor Xemacs via fink.</p>
+<p>X11 can be installed in a variety of ways.  This document only
+describes installations with Apple's X11 package because it is the
+fastest and easiest way to install X.</p>
+<p>NOTE: X11 will come preinstalled with OS X.3 and greater.</p>
+<p>Fetch the Apple X11 and X11 SDK installer packages.</p>
+<pre>
+  <a href="http://www.apple.com/macosx/x11/download">http://www.apple.com/macosx/x11/download</a></pre>
+<p>The link to the SDK is a little obscure - look in the bottom
+right-hand corner.  First intall the X11 package, followed by the X11
+SDK by double clicking each package icon and following the onscreen
+instructions.</p>
+<p></p>
+<li><strong><a name="item_creating_users_for_mysql">Creating users for MySQL</a></strong><br />
+</li>
+Since we are going to be installing MySQL, it's appropriate to create
+specific users and groups for the database.
+<p>User and group management under Mac OS X is handled by the NetInfo
+Manager.  I'm going to bypass the GUI, instead adding the appropriate
+users and groups through the command line. The following commands
+should be run as root (or sudo):</p>
+<p>Important Note: These examples assume that the specific user and group
+IDs are not yet assigned on your system.  Change these values
+accordingly if they are.</p>
+<pre>
+        This example uses:
+                 uid     gid
+        mysql    2001    2001</pre>
+<p>The mysql user:</p>
+<pre>
+   $ niutil -create / /users/mysql      
+   $ niutil -createprop / /users/mysql uid 2001
+   $ niutil -createprop / /users/mysql gid 2001
+   $ niutil -createprop / /users/mysql name mysql
+   $ niutil -createprop / /users/mysql passwd *
+   $ niutil -createprop / /users/mysql realname mysql
+   $ niutil -createprop / /users/mysql _writers_passwd root
+   $ niutil -createprop / /users/mysql change 0
+   $ niutil -createprop / /users/mysql home /usr/local/mysql
+   $ niutil -createprop / /users/mysql shell /dev/null</pre>
+<p>The mysql group:</p>
+<pre>
+   $ niutil -create / /groups/mysql
+   $ niutil -createprop / /groups/mysql gid 2001
+   $ niutil -createprop / /groups/mysql passwd *</pre>
+<p>Note that the mysql user's home directory was set to
+/usr/local/mysql, a directory that will be created during the
+installation of MySQL.</p>
+<p></p>
+<li><strong><a name="item_mysql">MySQL</a></strong><br />
+</li>
+MySQL can be installed on Mac OS X as a precompiled package,
+compiled directly from source, or through the fink package manager
+as either source or binary. Installation from a precompiled binary
+is the fastest and most sure-fire way to get a working installation.
+However, I've found that a source install, although a little slower,
+more closely mirrors mysql installations on unix systems.
+<dl>
+<dt><strong><a name="item_installing_mysql_from_source">Installing MySQL from source</a></strong><br />
+</dt>
+<ol>
+<li><strong><a name="item_download_the_source_tarball_from_mysql_2ecom">Download the source tarball from mysql.com</a></strong><br />
+</li>
+<pre>
+    % curl -O <a href="ftp://ftp.orst.edu/pub/mysql/Downloads/MySQL-4.0/mysql-4.0.13.tar.gz">ftp://ftp.orst.edu/pub/mysql/Downloads/MySQL-4.0/mysql-4.0.13.tar.gz</a></pre>
+<li><strong><a name="item_unpack_and_install_the_distribution">Unpack and install the distribution</a></strong><br />
+</li>
+<pre>
+    % gnutar -zxf mysql-4.0.12.tar.gz
+    % cd mysql-4.0.12
+    % ./configure --prefix=/usr/local/mysql \
+                  --with-unix-socket-path=/usr/local/mysql/run/mysql_socket \
+                  --with-mysqld-user=mysql \
+                  --with-comment
+    % make
+    % sudo make install
+    % sudo mkdir /usr/local/mysql/run</pre>
+<li><strong><a name="item_configure_the_installation">Configure the installation</a></strong><br />
+</li>
+<pre>
+    % sudo /usr/local/mysql/bin/mysql_install_db --force # create var/ for DBs
+    % sudo chown -R mysql /usr/local/mysql/var /usr/local/mysql/run
+    % sudo chgrp -R mysql /usr/local/mysql</pre>
+</ol>
+<dt><strong><a name="item_installing_mysql_from_a_precompiled_package">Installing MySQL from a precompiled package</a></strong><br />
+</dt>
+<ol>
+<li><strong><a name="item_download_the_package_from_mysql_2ecom">Download the package from mysql.com</a></strong><br />
+</li>
+<pre>
+    <a href="http://www.mysql.com/downloads/">http://www.mysql.com/downloads/</a></pre>
+<p>Find the ``standard'' release in pkg/dmg form and download it from a
+nearby mirror.  Double click the .dmg file and follow the typical
+installer instructions.  The package places everything in standard
+paths (ie the mysql.sock is found in /etc/).</p>
+<li><strong>Configure the installation</strong><br />
+</li>
+<pre>
+    % sudo chown -R mysql /usr/local/mysql/data
+    % sudo chgrp -R mysql /usr/local/mysql
+    % cd /usr/local/mysql
+    % sudo ./configure # installs the appropriate databases</pre>
+</ol>
+</dl>
+<li><strong><a name="item_starting_mysql">Starting MySQL</a></strong><br />
+</li>
+<ol>
+<li><strong><a name="item_start_the_mysql_database_daemon">Start the mysql database daemon</a></strong><br />
+</li>
+<pre>
+    % sudo /usr/local/mysql/bin/mysqld_safe --user=mysql &amp;
+         OR (for Fink installs):
+    % sudo /sw/bin/mysqld_safe &amp;</pre>
+<li><strong><a name="item_set_a_root_user_for_the_mysql_installation">Set a root user for the MySQL installation</a></strong><br />
+</li>
+<pre>
+
+    % mysqladmin -u root password 'new_password'</pre>
+<li><strong><a name="item_finally_2c_be_sure_to_add_the_mysql_2fbin_director">Finally, be sure to add the mysql/bin directory to your path.</a></strong><br />
+</li>
+<li><strong><a name="item_you_will_also_probably_want_to_create_a_mysql_user">You will also probably want to create a mysql user and group.</a></strong><br />
+</li>
+See the MySQL documentation for more information.
+<p></p></ol>
+<li><strong><a name="item_installing_libjpeg_2c_libpng_2c_gd_2c_and_gd">Installing libjpeg, libpng, gd, and GD</a></strong><br />
+</li>
+gd is a graphics drawing library and is the most troublesome part of a
+GBrowse installation.  Although GD and GD.pm can both be installed by
+fink, there are path and versioning difficulties that have yet to be
+worked out.  In addition to &lt;little&gt; gd, there is &lt;big&gt; GD, a perl
+library for interacting with little gd.
+
+<pre>
+
+Install jpegsrc and libpng</pre>
+<pre>
+  % curl -O  <a href="ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v6b.tar.gz">ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v6b.tar.gz</a>
+  % gnutar -xzf jpegsrc.v6b.tar.gz
+  % pushd jpeg-6b/
+  % ./configure
+  % make
+  % sudo make install mandir=/usr/local/share/man
+  % sudo make install-lib
+  % sudo ranlib /usr/local/lib/libjpeg.a
+  % popd</pre>
+<p>Now you need to compile the libpng code. This allows you to
+manipulate PNG files.</p>
+<pre>
+  % curl -O <a href="http://www.libpng.org/pub/png/src/libpng-1.2.5.tar.gz">http://www.libpng.org/pub/png/src/libpng-1.2.5.tar.gz</a>
+  % gnutar -xzf libpng-1.2.5.tar.gz 
+  % pushd libpng-1.2.5/
+  % cp scripts/makefile.darwin makefile
+  % make ZLIBINC=&quot;/usr/lib&quot; ZLIBLIB=&quot;/usr/lib&quot;
+  % sudo make install
+  % sudo ranlib /usr/local/lib/libpng.a
+  % popd</pre>
+<pre>
+  % curl -O <a href="http://www.boutell.com/gd/http/gd-2.0.15.tar.gz">http://www.boutell.com/gd/http/gd-2.0.15.tar.gz</a>
+  % gnutar -zxf gd-2.0.15.tar.gz
+  % pushd gd-2.0.15
+  % ./configure CPPFLAGS=-I/usr/X11R6/include/freetype2 \ 
+       --prefix=/usr/local --mandir=/usr/local/man \
+       --bindir=/usr/local/bin --with-freetype=/usr/X11R6/lib \
+       --inludedir=/usr/local/include
+  % make
+  % sudo make install
+  % popd</pre>
+<pre>
+  % curl -O <a href="http://stein.cshl.org/WWW/software/GD/GD.pm.tar.gz">http://stein.cshl.org/WWW/software/GD/GD.pm.tar.gz</a>
+  % gnutar xvfz GD-2.06.tar.gz
+  % pushd GD-2.06/
+  % perl Makefile.PL
+  % make
+  % make test
+  % sudo make install
+  % popd</pre>
+<p></p>
+<li><strong><a name="item_installing_required_perl_modules">Installing required Perl modules</a></strong><br />
+</li>
+Most of the required Perl modules for GBrowse can be installed
+painlessly on Mac OS X through the CPAN module, indicated by the cpan&gt;
+prompt. The CPAN module simplifies the retrieval and installation of
+modules from the Comprehensive Perl archive Network (CPAN). The first
+time you run the CPAN module from the command line, it will go through
+some configuration steps.  After this you will be presented with the
+``cpan&gt;'' prompt. Type ``?'' to get for help.  To install modules, type
+``install &lt;module_name&gt;''.  For example, here's how to install the
+``Bundle::CPAN'' module, which bundles together a number of modules
+recommended by CPAN:
+<pre>
+  eg: % sudo perl -MCPAN -e shell
+      cpan&gt; install Bundle::CPAN</pre>
+<p>Specific instructions for those that cannot be installed in this
+manner are provided below.</p>
+<p>Many modules listed here are prerequisites for other components
+(primarily BioPerl). Only those marked with an * are required by
+GBrowse proper.</p>
+<pre>
+        Module:                                    Install By:
+       *1.  Bundle::LWP                            CPAN
+           (installs a variety
+            of required modules)
+       *2.  GD                                     See above
+       *3.  Storable                               CPAN
+       *4.  DBI                                    CPAN
+       *5.  DBD::mysql                             CPAN
+        6.  Text::Shellwords                       CPAN
+        7.  IO::String                             CPAN
+        8.  IO::Scalar                             CPAN
+        9.  File::Temp                             CPAN
+        10. Text::Balanced                         CPAN
+        11. Parse::RecDescent                      CPAN
+        12. Bundle::Bioperl                        CPAN</pre>
+<p></p>
+<li><strong><a name="item_installing_dbd_3a_3amysql">Installing DBD::mysql</a></strong><br />
+</li>
+If you have problems installing DBD via CPAN, read this, and check the
+paths to your mysql/include and mysql/lib libraries. There are some
+library path issues with source installs of MySQL and its library
+files.
+<p>DBD::mysql looks for libmysqlclient.dylib in /usr/local/mysql/lib dyld
+looks for it in /usr/local/mysql/lib/mysql/.</p>
+<p>We remedy this conflict in the Makefile</p>
+<pre>
+  # Fetch DBD-mysql-2.9002 from CPAN
+  % gnutar xvfz  DBD-mysql-2.9002
+  % cd DBD-mysql-2.9002/
+  % perl Makefile.PL --cflags=-I'/usr/local/mysql/include' \
+                     --libs=&quot;-L/usr/local/mysql/lib -lmysqlclient -lz -lm&quot;
+  % make
+  % make test
+  $ sudo make install</pre>
+<p></p></ol>
+<p>
+</p>
+<h2><a name="_installing_optional_components">--- Installing optional components</a></h2>
+<p>The following modules are optional. If these modules are present, the
+``Sequence Dumper'' plugin will be able to produce GAME and BSML
+output. The LWP module enables loading of remote 3rd party
+annotations.</p>
+<pre>
+    Optional Modules:
+    1. XML::Parser 2.30 or higher
+    2. XML::Twig 3.04 or higher
+    3. XML::Dom 1.34 or higher
+    4. XML::Writer 0.4 or higher
+    5. XML::Parser::PerlSAX</pre>
+<ol>
+<li><strong><a name="item_expat">Installing expat (optional)</a></strong><br />
+</li>
+<pre>
+  curl -O <a href="http://umn.dl.sourceforge.net/sourceforge/expat/expat-1.95.6.tar.gz">http://umn.dl.sourceforge.net/sourceforge/expat/expat-1.95.6.tar.gz</a>
+  gnutar -zxf expat-1.95.6.tar.gz
+  pushd expat-1.95.6/
+  ./configure
+  make
+  make install
+  popd</pre>
+<li><strong><a name="item_parser">Installing XML::Parser (optional)</a></strong><br />
+</li>
+The XML::Parser module requires that you download and install the
+expat XML parsing libraries of first.  Download the expat library from
+expat.sourceforge.net. Untar the directory. The standard installation
+paths will work fine.
+<pre>
+     % ./configure
+     % make
+     % sudo make install</pre>
+<pre>
+  After downloading and untarring XML::Parser from CPAN...
+  % cd XML-Parser-2.31
+  % perl Makefile.PL EXPATLIB=/usr/local/lib EXPATINCPATH=/usr/local/include
+  % make
+  % make test
+  % sudo make install</pre>
+<p></p></ol>
+<p>
+</p>
+<h2><a name="_installing_the_generic_genome_browser">--- Installing the Generic Genome Browser</a></h2>
+<p>The Generic Genome Browser is a CGI script and some Perl modules that
+use Bio::DB::GFF and Bio::Graphics to create the navigable graphical
+displays of genomic data.  But you know that already, or you wanted
+have made it this far, no?  GBrowse lives at www.gmod.org.  Download
+and unpack the latest version and run the following incantation to
+install it in the default locations for Apache.</p>
+<pre>
+  % perl Makefile.PL HTDOCS=/Library/WebServer/Documents
+                     CGIBIN=/Library/WebServer/CGI-Executables
+                     CONF=/etc/httpd
+  % make
+  % sudo make install</pre>
+<p>Here I am using the default Sites folder to store the
+gbrowse-specific files.</p>
+<p>
+</p>
+<h2><a name="_populating_the_database">--- Populating the database</a></h2>
+<p>Please see the similarly titled section in the main INSTALL document.</p>
+<p>
+</p>
+<h2><a name="_configuring_apache">--- Configuring Apache</a></h2>
+<p>If you followed all examples in this document, you are ready to start
+using GBrowse. If you placed the GBrowse files in other paths, you
+need to let Apache know where they are. Specifically, this may
+required modifying the DocumentRoot, adding a ScriptAlias, or creating
+a VirtualHost. See the Apache documentation for more information.</p>
+<p>You can start Apache by:
+</p>
+<pre>
+
+  % sudo /usr/sbin/apachectl start</pre>
+<p>
+</p>
+<h2><a name="_testing_the_browser">--- Testing the Browser</a></h2>
+<p>You should now be able to browse the yeast genome.  Type the following
+URL into your favorite browser:</p>
+<pre>
+  <a href="http://127.0.0.1/cgi-bin/gbrowse?source=yeast">http://127.0.0.1/cgi-bin/gbrowse?source=yeast</a></pre>
+<p>This will display the genome browser instructions and a search field.
+Type in ``III'' to start searching chromosome III, or search for
+``glucose'' to find a bunch of genes that are involved in glucose
+metabolism.</p>
+<p>
+</p>
+<hr />
+<h1><a name="authors">Authors</a></h1>
+<p>Todd W. Harris (<a href="mailto:harris@cshl.org">harris@cshl.org</a>) Please direct all questions,
+comments and bug reports relating to this documentation or the
+Installer package to me.</p>
+<p>GBrowse was written largely by Lincoln Stein (<a href="mailto:lstein@cshl.org">lstein@cshl.org</a>), with
+contributions by members of the Generic Model Organism Database (GMOD)
+community (http://www.gmod.org/).</p>
+<p>You can read more about GBrowse in:</p>
+<p>Stein LD, Mungall C, Shu S, Caudy M, Mangone M, Day A, Nickerson E,
+Stajich JE, Harris TW, Arva A, Lewis S.</p>
+<p>The generic genome browser: a building block for a model organism
+system database.  Genome Res. 2002 Oct;12(10):1599-610.
+<a href="http://www.genome.org/cgi/content/full/12/10/1599">http://www.genome.org/cgi/content/full/12/10/1599</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright_information">Copyright information</a></h1>
+<p>Material in this document is copyright 2001-2003 by the Cold Spring
+Harbor Laboratory. This information is provided ``AS-IS'' without any
+warranty, expressed or implied.
+
+</p>
+<p>$Id: INSTALL.MacOSX.pod,v 1.3 2003/12/01 18:15:08 scottcain Exp $
+
+</p>
+
+</body>
+
+</html>

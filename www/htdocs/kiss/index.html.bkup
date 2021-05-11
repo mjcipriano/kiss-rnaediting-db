@@ -1,0 +1,205 @@
+<html>
+<head>
+<title>KISS - A bioinformatic tool for gRNA analysis</title>
+<LINK REL="SHORTCUT ICON" HREF="http://gmod.mbl.edu/favicon.ico"> <script type="text/javascript" src="/javascript/overlib.js"></script>
+<link rel="stylesheet" type="text/css" href="/gbrowse/gbrowse.css" />
+</head>
+
+<body>
+<table class="searchtitle" border="0" width="100%">
+        <tbody><tr>
+                <td width="70%"> <a href="/kiss/">Home</a> | <a href="/gb/gbrowse/tbgrna">Gbrowse</a> | <a href="/cgi-bin/kiss-gblast/tbgrna">Gblast</a> | <a href="/kiss/download/">Downloads</a>
+                </td>
+        </tr>
+</table>
+
+<center>
+	<h1>(KISS) - Kinetoplastid Insertion and Deletion Sequence Search Tool</h1>
+	<h2> A bioinformatic tool for gRNA analysis</h2>
+<hr width=40%>
+</center>
+
+<h3>Introduction</h3>
+In Kinetoplast mitochondria the posttranscriptional insertion and deletion of uridines in the mRNA (RNA editing) is templated by small noncoding RNAs named guide RNAs (gRNAs).  These 45-70 nucleotide long molecules are mainly transcribed from minicircles within the mitochondrial genome.  Trypanosoma brucei contains approximately 10,000 minicircles which fall into at least 300 different sequence classes.  In order to uncover the guiding potential within all the minicircle encoded gRNAs, we initiated a sequencing project and developed an annotation tool called KISS.  KISS is a pipeline that uses simple BLAST comparisons and inverted repeat finding (einverted, EMBOSS) to annotate potential gRNAs and their binding sites on mitochondrial transcripts.  Comparing minicircle sequences with mitochondria cDNA transcripts we were able to indentify unique putitive guide RNA genes which were then annotated as features in a Gbrowse database.. This tool can be used to visialize:
+<ol>
+<li>the possible interactions of gRNAs with pre-edited and partially edited transcripts</li>
+<li>the position of guide RNA genes on minicircles</li>
+<li>the differential editing patterns of mitochondrial mRNAs</li>
+</ol>
+<p>
+<h2>What is RNA editing?</h2>
+
+<table width=100%><tr><td>
+<img width=i500 src="img/edit_1.png">
+</td><td>
+<img src="img/RNA_editing.gif"><br>
+</td></tr></table>
+<h3>Goals</h3>
+We had many goals in creating this resource. Our (incomplete) goals are to:
+<ul>
+<li>Provide a work bench for the analysis of RNA editing in Kinetoplasts</li>
+<li>Provide a well annotated set of guide RNAs, minicircles and variable transcripts</li>
+<li>Give the ability to examine and visualize differential editing patterns</li>
+<li>Determine if multiple gRNAs can edit for a specific region</li>
+<li>Determine the depth of difference in minicircle sequences</li>
+<li>Provide the ability to determine the sequence space for mitochondrial transcripts</li>
+<li>Determine the origins of gRNAs</li>
+</ul>
+
+<table width=90% cellpadding=6 cellspacing=6>
+<tr>
+<td valign=top>
+<h2>Statistics</h2>
+
+<h3>MINICIRCLE Statistics</h3>
+<table width=500>
+<tr><td colspan=2>Each minicircle is seen a total of 5.3 times in the dataset for minicircles greater then 500  bp's (231 sequences)</td>
+<tr><td>Total number of minicircles of size greater then 30</td><td>509</td></tr>
+<tr><td>The std deviation of the distribution of sequences seen</td><td>6</td></tr>
+<tr><td>The median of the distribution of sequenes seen </td><td>2</td></tr>
+<tr><td>The mode of the distribution of sequenes seen is</td><td>1</td></tr>
+
+<tr><td>The mean minicircle size</td><td>582</td></tr>
+<tr><td>The median minicircle size</td><td>422</td></tr>
+<tr><td>The stdev of the minicircle size</td><td>384</td></tr>
+</table>
+<i>*This includes data between the values of 75 and 2203</i>
+</p>
+</td><td>
+<h3>CDNA Statistics</h3>
+<table width=500>
+<tr><td>Total number of cdna's of size greater then 30 </td><td>2088</td></tr>
+<tr><td>The mean cdna size</td><td>532</td></tr>
+<tr><td>The median cdna size</td><td>420.5</td></tr>
+<tr><td>The mode cdna size</td><td>345</td></tr>
+<tr><td>The stdev of the cdna size</td><td>444</td></tr>
+</table>
+<i>*This includes data between the values of 30 and 4007</i>
+
+</td></tr>
+</table>
+</td></tr>
+
+
+<center><h2>Navigate</h2>
+<table border=1 width=100%>
+<tr>
+<th>Gene</td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbrpsed">rps12</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbnd9ed">nd9</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbnd8ed">nd8</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbnd7ed">nd7</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbnd5">nd5</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbnd4">nd4</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbnd3ed">nd3</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbnd1">nd1</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbmurf5">murf5</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tba6ed">a6</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbmurf2ed">murf2</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbmurf1">murf1</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbcybed">cyb</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbcr4ed">cr4</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbcr3ed">cr3</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbco3ed">co3</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbco2ed">co2</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tbco1">co1</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tb12s">12S</a></td>
+<td><a href="/cgi-bin/kiss?db=tbgrna&gene=tb9s">9S</a></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbrps12un">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd9un">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd8un">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd7un">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd5">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd4">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd3un">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd1">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbmurf5">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tba6un">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbmurf2un">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbmurf1">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbcybun">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbcr4un">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbcr3un">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbco3un">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbco2un">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbco1">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tb12S">pre-edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tb9S">pre-edited</a></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbrps12ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd9ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd8ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd7ed">edited</a></td>
+<td></td>
+<td></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbnd3ed">edited</a></td>
+<td></td>
+<td></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tba6ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbmurf2ed">edited</a></td>
+<td></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbcybed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbcr4ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbcr3ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbco3ed">edited</a></td>
+<td><a href="/gb/gbrowse/tbgrna?name=Tbco2ed">edited</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th>% edited</td>
+<td>85%</td>
+<td>46%</td>
+<td>52%</td>
+<td>60%</td>
+<td>3%</td>
+<td>0%</td>
+<td>40%</td>
+<td>11%</td>
+<td>0%</td>
+<td>74%</td>
+<td>0%</td>
+<td>10%</td>
+<td>4%</td>
+<td>30%</td>
+<td>60%</td>
+<td>83%</td>
+<td>0%</td>
+<td>0%</td>
+<td>3%</td>
+<td>12%</td>
+</tr>
+<tr>
+<th># distinct gRNA's</td>
+<td>11</td>
+<td>12</td>
+<td>12</td>
+<td>26</td>
+<td>1</td>
+<td>0</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>22</td>
+<td>0</td>
+<td>4</td>
+<td>2</td>
+<td>7</td>
+<td>7</td>
+<td>47</td>
+<td>0</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+</tr>
+</table>
+</center>
+
+</body>
+</html>

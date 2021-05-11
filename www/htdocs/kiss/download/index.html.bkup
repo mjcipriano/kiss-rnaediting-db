@@ -1,0 +1,229 @@
+<html>
+<head>
+<title>KISS - A bioinformatic tool for gRNA analysis</title>
+<LINK REL="SHORTCUT ICON" HREF="http://gmod.mbl.edu/favicon.ico"> <script type="text/javascript" src="/javascript/overlib.js"></script>
+<link rel="stylesheet" type="text/css" href="/gbrowse/gbrowse.css" />
+</head>
+
+<body>
+<table class="searchtitle" border="0" width="100%">
+        <tbody><tr>
+                <td width="70%"> <a href="/kiss/">Home</a> | <a href="/gb/gbrowse/tbgrna">Gbrowse</a> | <a href="/cgi-bin/kiss-gblast/tbgrna">Gblast</a> | <a href="/kiss/download/">Downloads</a>
+                </td>
+        </tr>
+</table>
+
+<center>
+	<h1>(KISS) - Kinetoplastid Insertion and Deletion Sequence Search Tool</h1>
+	<h2> A bioinformatic tool for gRNA analysis</h2>
+<hr width=40%>
+<h1>Downloads of Bulk Data and Statistics</h1>
+
+<p>
+Here you will find downloads of the information used in creating this tool as well as other downloads that might be useful.
+</p>
+
+<p>
+<table border=1 width=500>
+	<tr>
+		<td>Sequenced Minicircles</td>
+		<td><a href="minicircle_statistics.txt">statistics</a></td>
+		<td><a href="minicircle_sequences.fasta.gz">fasta</a></td>
+	</tr>
+	<tr>
+		<td>Sequenced gRNA</td>
+		<td><a href="gcdna_statistics.txt">statistics</a></td>
+		<td><a href="sequenced_grna.fasta.gz">fasta<a></td>
+	</tr>
+	<tr>
+		<td>Sequenced gRNA predicted guiding regions(non-redundant)</td>
+		<td>&nbsp;</td>
+		<td><a href="sequenced_grna_unique.fasta.gz">fasta<a></td>
+	</tr>
+	<tr>
+		<td>Automaticaly Predicted gRNA sequences (non-redundant)<br><i>Predicted by merging regions similar to transcripts in minicircles.</i></td>
+		<td>&nbsp;</td>
+		<td><a href="predicted_grna.fasta.gz">fasta</a></td>
+	</tr>
+	<tr>
+		<td>Transcript Sequences</td>
+		<td><a href="transcript_statistics.txt">statistics</a></td>
+		<td><a href="transcript_sequences.fasta.gz">fasta</a></td>
+	</tr>
+	<tr>
+		<td>Maxicircle Sequences</td>
+		<td>&nbsp</td>
+		<td><a href="maxicircle_sequences.fasta.gz">fasta</a></td>
+	</tr>
+	<tr>
+		<td>gRNA Statistics and Downloads</td>
+		<td><a href="gcdna/report.txt">gcDNA only</a><br>
+		<a href="predicted/report.txt">minicircles only</a></td>
+		<td><a href="report.txt">combined</a></td>
+	</tr>
+	<tr>
+		<td>Mapping Procedure</td>
+		<td><a href="procedure.txt">text</a></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Outcome</td>
+		<td><A href="outcome.txt">text</a></td>
+		</td>&nbsp;</td>
+	</tr>
+</table>
+<!-- 9S. 12S, a6un, a6ed, co1, co2un, co2ed, co3un, co3ed, cr3un, cr3ed, cr4un, cr4ed, cybun, cybed, murf1, murf2un, murf2ed, murf5, nd1, nd3un, nd3ed, nd4, nd5, nd7un, nd7ed, nd8un, nd8ed, nd9un, nd9ed, rps12un, rps12ed -->
+<p>
+<h1>Downloads of Individual Gene Information</h1>
+<table border=1>
+	<tr>
+		<th>Gene</th>
+		<th>Unique gRNA</th>
+		<th>Unique gRNA(substring)</th>
+		<th>Multi-purpose gRNAs</th>
+		<th>gRNA Location Classes</th>
+	</tr>
+		<td>9S</td>
+		<td><a href="unique_Tb9S.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tb9S.fasta">fasta</a></td>
+		<td>&nbsp;</td>
+		<td><a href="Tb9S/unique_results.tab">tab-delim</a></td>
+	<tr>
+		<td>12S</td>
+		<td><a href="unique_Tb12S.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tb12S.fasta">fasta</a></td>
+		<td>&nbsp;</td>
+		<td><a href="Tb12S/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>a6</td>
+		<td><a href="unique_Tba6.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tba6.fasta">fasta</a></td>
+		<td><a href="multipurpose_a6.txt">tab-delim</a></td>
+		<td><a href="Tba6/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>co1</td>
+		<td><a href="unique_Tbco1.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbco1.fasta">fasta</a></td>
+		<td>&nbsp;</td>
+		<td><a href="Tbco1/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>co2</td>
+		<td><a href="unique_Tbco2.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbco2.fasta">fasta</a></td>
+		<td><a href="multipurpose_co2.txt">tab-delim</a></td>
+		<td><a href="Tbco2/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>co3</td>
+		<td><a href="unique_Tbco3.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbco3.fasta">fasta</a></td>
+		<td><a href="multipurpose_co3.txt">tab-delim</a></td>
+		<td><a href="Tbco3/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>cr3</td>
+		<td><a href="unique_Tbcr3.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbcr3.fasta">fasta</a></td>
+		<td><a href="multipurpose_cr3.txt">tab-delim</a></td>
+		<td><a href="Tbcr3/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>cr4</td>
+		<td><a href="unique_Tbcr4.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbcr4.fasta">fasta</a></td>
+		<td><a href="multipurpose_cr4.txt">tab-delim</a></td>
+		<td><a href="Tbcr4/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>cyb</td>
+		<td><a href="unique_Tbcyb.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbcyb.fasta">fasta</a></td>
+		<td><a href="multipurpose_cyb.txt">tab-delim</a></td>
+		<td><a href="Tbcyb/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>murf1</td>
+		<td><a href="unique_Tbmurf1.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbmurf1.fasta">fasta</a></td>
+		<td>&nbsp;</td>
+		<td><a href="Tbmurf1/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>murf2</td>
+		<td><a href="unique_Tbmurf2.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbmurf2.fasta">fasta</a></td>
+		<td><a href="multipurpose_murf2.txt">tab-delim</a></td>
+		<td><a href="Tbmurf2/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>murf5</td>
+		<td><a href="unique_Tbmurf5.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbmurf5.fasta">fasta</a></td>
+		<td>&nbsp;</td>
+		<td><a href="Tbmurf5/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>nd1</td>
+		<td><a href="unique_Tbnd1.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbnd1.fasta">fasta</a></td>
+		<td><a href="multipurpose_nd1.txt">tab-delim</a></td>
+		<td><a href="Tbnd1/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>nd3</td>
+		<td><a href="unique_Tbnd3.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbnd3.fasta">fasta</a></td>
+		<td><a href="multipurpose_nd3.txt">tab-delim</a></td>
+		<td><a href="Tbnd3/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>nd4</td>
+		<td><a href="unique_Tbnd4.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbnd4.fasta">fasta</a></td>
+		<td><a href="multipurpose_nd4.txt">tab-delim</a></td>
+		<td><a href="Tbnd4/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>nd5</td>
+		<td><a href="unique_Tbnd5.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbnd5.fasta">fasta</a></td>
+		<td><a href="multipurpose_nd5.txt">tab-delim</a></td>
+		<td><a href="Tbnd5/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>nd7</td>
+		<td><a href="unique_Tbdn7.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbdn7.fasta">fasta</a></td>
+		<td><a href="multipurpose_nd7.txt">tab-delim</a></td>
+		<td><a href="Tbnd7/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>nd8</td>
+		<td><a href="unique_Tbnd8.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbnd8.fasta">fasta</a></td>
+		<td><a href="multipurpose_nd8.txt">tab-delim</a></td>
+		<td><a href="Tbnd8/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>nd9</td>
+		<td><a href="unique_Tbnd9.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbnd9.fasta">fasta</a></td>
+		<td><a href="multipurpose_nd9.txt">tab-delim</a></td>
+		<td><a href="Tbnd9/unique_results.tab">tab-delim</a></td>
+	</tr>
+	<tr>
+		<td>rps12</td>
+		<td><a href="unique_Tbrps12.fasta">fasta</a></td>
+		<td><a href="unique_substring_Tbrps12.fasta">fasta</a></td>
+		<td><a href="multipurpose_rps12.txt">tab-delim</a></td>
+		<td><a href="Tbrps12/unique_results.tab">tab-delim</a></td>
+	</tr>
+</table>
+		
+</center>
+
+</body>
+</html>

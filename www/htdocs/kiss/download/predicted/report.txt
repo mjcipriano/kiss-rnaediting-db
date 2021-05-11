@@ -1,0 +1,189 @@
+
+gRNA Report
+
+The following are the number of unique gRNAs found for each gene.  For each gene, 2 statistics are generated, Unique and Substring.
+The Substring statistic will call 2 gRNAs the same if one is a substring of the other.
+The Unique statistic will only call 2 gRNAs the same if the full length of the sequence is the same.
+
+You may download the dataset of each of the genes at the locations listed below.
+
+#############################################
+Gene: Tbnd9
+-----------
+Unique gRNAs: 96
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbnd9.fasta
+
+Unique Substring gRNAs: 69
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbnd9.fasta
+
+Coverage is 59.66%
+#############################################
+Gene: Tb12S
+-----------
+Unique gRNAs: 41
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tb12S.fasta
+
+Unique Substring gRNAs: 32
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tb12S.fasta
+
+Coverage is not available for non-edited genes
+#############################################
+Gene: Tba6
+-----------
+Unique gRNAs: 158
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tba6.fasta
+
+Unique Substring gRNAs: 100
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tba6.fasta
+
+Coverage is 76.46%
+#############################################
+Gene: Tbnd1
+-----------
+Unique gRNAs: 3
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbnd1.fasta
+
+Unique Substring gRNAs: 3
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbnd1.fasta
+
+Coverage is not available for non-edited genes
+#############################################
+Gene: Tbmurf1
+-----------
+Unique gRNAs: 5
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbmurf1.fasta
+
+Unique Substring gRNAs: 5
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbmurf1.fasta
+
+Coverage is not available for non-edited genes
+#############################################
+Gene: Tbcr3
+-----------
+Unique gRNAs: 22
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbcr3.fasta
+
+Unique Substring gRNAs: 22
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbcr3.fasta
+
+Coverage is 67.33%
+#############################################
+Gene: Tbco2
+-----------
+Unique gRNAs: 26
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbco2.fasta
+
+Unique Substring gRNAs: 19
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbco2.fasta
+
+Coverage is 11.65%
+#############################################
+Gene: Tbnd7
+-----------
+Unique gRNAs: 95
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbnd7.fasta
+
+Unique Substring gRNAs: 55
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbnd7.fasta
+
+Coverage is 58.59%
+#############################################
+Gene: Tbrps12
+-----------
+Unique gRNAs: 66
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbrps12.fasta
+
+Unique Substring gRNAs: 38
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbrps12.fasta
+
+Coverage is 76.92%
+#############################################
+Gene: Tbnd3
+-----------
+Unique gRNAs: 17
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbnd3.fasta
+
+Unique Substring gRNAs: 16
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbnd3.fasta
+
+Coverage is 65.38%
+#############################################
+Gene: Tbco1
+-----------
+Unique gRNAs: 10
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbco1.fasta
+
+Unique Substring gRNAs: 10
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbco1.fasta
+
+Coverage is not available for non-edited genes
+#############################################
+Gene: Tbnd8
+-----------
+Unique gRNAs: 50
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbnd8.fasta
+
+Unique Substring gRNAs: 42
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbnd8.fasta
+
+Coverage is 48.26%
+#############################################
+Gene: Tbnd5
+-----------
+Unique gRNAs: 14
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbnd5.fasta
+
+Unique Substring gRNAs: 14
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbnd5.fasta
+
+Coverage is not available for non-edited genes
+#############################################
+Gene: Tb9S
+-----------
+Unique gRNAs: 14
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tb9S.fasta
+
+Unique Substring gRNAs: 14
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tb9S.fasta
+
+Coverage is not available for non-edited genes
+#############################################
+Gene: Tbcr4
+-----------
+Unique gRNAs: 44
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbcr4.fasta
+
+Unique Substring gRNAs: 44
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbcr4.fasta
+
+Coverage is 75.53%
+#############################################
+Gene: Tbcyb
+-----------
+Unique gRNAs: 33
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbcyb.fasta
+
+Unique Substring gRNAs: 32
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbcyb.fasta
+
+Coverage is 11.46%
+#############################################
+Gene: Tbmurf2
+-----------
+Unique gRNAs: 27
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbmurf2.fasta
+
+Unique Substring gRNAs: 27
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbmurf2.fasta
+
+Coverage is 21.66%
+#############################################
+Gene: Tbco3
+-----------
+Unique gRNAs: 1031
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_Tbco3.fasta
+
+Unique Substring gRNAs: 425
+Available at http://gmod.mbl.edu//kiss/download/predicted/unique_substring_Tbco3.fasta
+
+Coverage is 87.42%

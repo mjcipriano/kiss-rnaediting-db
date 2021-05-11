@@ -1,0 +1,1 @@
+a_minicircle_name	a_mini_start	a_mini_end	a_transcript	a_transcript_start	a_transcript_end	a_mini_seq	a_gene	b_minicircle_name	b_mini_start	b_mini_end	b_transcript	b_transcript_start	b_transcript_end	b_mini_seq	b_gene

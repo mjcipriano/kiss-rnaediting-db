@@ -1,0 +1,63 @@
+Database Construction
+
+-In silico identification of gRNA genes
+
+All minicircle sequences were aligned to EST sequences using the WuBlast program. A modified similarity matrix was created 
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------
+Overview of data the Database Contains
+
+The database contains Transcripts, Minicircles, pre-edited and completely edited maxicircle genes, sequenced gRNAs, predicted gRNAs.
+
+Description of how prediction of gRNA is made.
+-The algorithm:
+  Minicircle sequences are aligned to transcript sequences while scoring G-U base pairings as an identity.  Areas of identity larger then 22bp's are annotated as possible gRNA sequences.
+
+Description different views:
+*Viewing a Minicircle
+-Matches to transcripts and maxicircle genes
+-Matches to sequenced gRNA's (gcDNA)
+-Matches to Kinetoplsatid gRNA's (published)
+-Inverted Repeats
+-Matches to Conserved Regions
+
+*Viewing a Transcript
+-Matches to the edited and pre-edited portions of the transcript
+-Matches to sequenced minicircles
+-Matches to sequenced gRNA's (gcDNA)
+
+*Viewing a Maxicircle Gene (pre-edited and fully edited versions)
+-Matches to Transcipts
+  -Specific Amplified, Bloodstream
+  -Specific Amplified, Bloodstream Fractions
+  -Specific Amplified, Procyclic
+  -Specific Amplified, Procyclic Fractions
+  -Poly-dt primed, Procyclic
+-Matches to Minicircles (predicted gRNAs)
+-Matches to sequenced gRNAs (gcDNA)
+-PCR Primers
+
+
+Statistics:
+Coverage of the genes. (included in statistics file)
+# of unique gRNAs (included in statistics file)
+How many predictions are verified by sequenced gRNAs.
+Give percentage.
+
+Compare sequence diversity (tree would be nice, but not necessary for now, or even this paper)
+
+
+
+
+
